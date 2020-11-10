@@ -1,0 +1,46 @@
+{
+    "name": "egeatech/appupdater",
+    "description": "A package to handle mobile applications self-update",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marco Guidolin",
+            "email": "m.guidolin@egeatech.com",
+            "homepage": "https://www.egeatech.com"
+        }
+    ],
+    "homepage": "https://github.com/egeatech/appupdater",
+    "keywords": ["Laravel", "AppUpdater"],
+    "require": {
+        "php": ">=7.3",
+        "ext-fileinfo": "*",
+        "ext-json": "*",
+        "illuminate/support": "~7|~8",
+        "bensampo/laravel-enum": "^3.1",
+        "composer/semver": "^3.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~9.0",
+        "orchestra/testbench": "~5|~6"
+    },
+    "autoload": {
+        "psr-4": {
+            "EgeaTech\\AppUpdater\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EgeaTech\\AppUpdater\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EgeaTech\\AppUpdater\\Providers\\AppUpdaterServiceProvider"
+            ],
+            "aliases": {
+                "AppUpdater": "EgeaTech\\AppUpdater\\Facades\\AppUpdater"
+            }
+        }
+    }
+}
