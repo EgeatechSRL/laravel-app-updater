@@ -59,5 +59,18 @@ class AppUpdaterServiceProvider extends ServiceProvider
             __DIR__.'/../../config/app-updater.php' => config_path('app-updater.php'),
         ], 'app-updater.config');
 
+        // Publishing migrations.
+        $this->publishes([
+            __DIR__.'/../../database/migrations' => database_path('migrations'),
+        ], 'app-updater.migrations');
+
+        // Publishing the translation files.
+        $this->publishes([
+            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/egeatech/app-updater'),
+        ], 'app-updater.views');
+
+        // Registering package commands.
+        // $this->commands([]);
+    }
     }
 }
