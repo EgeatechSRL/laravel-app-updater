@@ -68,8 +68,8 @@ class AppUpdaterServiceProvider extends ServiceProvider
 
         // Publishing the translation files.
         $this->publishes([
-            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/egeatech/app-updater'),
-        ], 'app-updater.views');
+            __DIR__.'/../../resources/lang' => resource_path('lang/vendor/app-updater'),
+        ], 'app-updater.translations');
 
         // Publishing Vue component files.
         $this->publishes([
