@@ -9,7 +9,7 @@
             "homepage": "https://www.egeatech.com"
         }
     ],
-    "homepage": "https://github.com/egeatech/appupdater",
+    "homepage": "https://github.com/EgeatechSRL/app-updater",
     "keywords": ["Laravel", "AppUpdater"],
     "require": {
         "php": ">=7.3",
