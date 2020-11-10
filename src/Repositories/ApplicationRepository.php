@@ -22,7 +22,7 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
     public function find(ApplicationId $id): ApplicationModelContract
     {
-        return ($this->_modelInstance)->find($id->getValue());
+        return ($this->_modelInstance)->findOrFail($id->getValue());
     }
 
     public function findLatestVersionBy(array $findCriteria = []): ?ApplicationModelContract
