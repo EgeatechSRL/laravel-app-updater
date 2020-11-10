@@ -16,6 +16,8 @@ class AppUpdaterServiceProvider extends ServiceProvider
     {
          $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'app-updater');
 
+         $this->registerDependencyInjectionBindings();
+
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -69,8 +71,17 @@ class AppUpdaterServiceProvider extends ServiceProvider
             __DIR__.'/../../resources/lang' => resource_path('lang/vendor/egeatech/app-updater'),
         ], 'app-updater.views');
 
+        // Publishing Vue component files.
+        $this->publishes([
+            __DIR__.'/../../resources/js/Components' => resource_path('js/vendor/egeatech/app-updater'),
+        ], 'app-updater.vue-components');
+
         // Registering package commands.
         // $this->commands([]);
     }
+
+    private function registerDependencyInjectionBindings(): void
+    {
+        (new DependencyInjectionHandler())->register();
     }
 }
