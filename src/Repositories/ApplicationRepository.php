@@ -4,8 +4,11 @@ namespace EgeaTech\AppUpdater\Repositories;
 
 use Composer\Semver\Semver;
 use Illuminate\Support\Collection;
+use Illuminate\Database\QueryException;
+use EgeaTech\AppUpdater\Constants\PdoError;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
+use EgeaTech\AppUpdater\Exceptions\InvalidVersionException;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
 use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
@@ -54,30 +57,49 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
     public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath): ApplicationModelContract
     {
-        $applicationData = $data->toArray();
-        $applicationData[$this->_modelInstance->getFilePathField()] = $filePath->getValue();
+        try {
 
-        return ($this->_modelInstance)->create($applicationData);
+            $applicationData = $data->toArray();
+            $applicationData[$this->_modelInstance->getFilePathField()] = $filePath->getValue();
+
+            return ($this->_modelInstance)->create($applicationData);
+        } catch (QueryException $exception) {
+            if ($exception->getCode() === PdoError::DuplicatedValue) {
+                throw new InvalidVersionException($exception);
+            }
+
+            throw $exception;
+        }
     }
 
     public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath): ApplicationModelContract
     {
-        $application = $this->find($id);
-        $updateData = $data->toArray();
+        try {
 
-        // Dynamically update all available fields, which have been mapped according
-        // to Model definition
-        foreach ($updateData as $updatedField => $updatedValue) {
-            $application->{$updatedField} = $updatedValue;
+            $application = $this->find($id);
+            $updateData = $data->toArray();
+
+            // Dynamically update all available fields, which have been mapped according
+            // to Model definition
+            foreach ($updateData as $updatedField => $updatedValue) {
+                $application->{$updatedField} = $updatedValue;
+            }
+
+            if ($filePath) {
+                $application->{$this->_modelInstance->getFilePathField()} = $filePath->getValue();
+            }
+
+            $application->save();
+
+            return $application;
+
+        } catch (QueryException $exception) {
+            if ($exception->getCode() === PdoError::DuplicatedValue) {
+                throw new InvalidVersionException($exception);
+            }
+
+            throw $exception;
         }
-
-        if ($filePath) {
-            $application->{$this->_modelInstance->getFilePathField()} = $filePath->getValue();
-        }
-
-        $application->save();
-
-        return $application;
     }
 
     public function deleteApplication(ApplicationId $id): bool
