@@ -33,6 +33,6 @@ class ApplicationDeleteController extends BaseController
     {
         $this->_applicationService->deleteApplication($applicationId);
 
-        return new JsonResponse([], JsonResponse::HTTP_ACCEPTED);
+        return new JsonResponse(['data' => []], JsonResponse::HTTP_ACCEPTED);
     }
 }
