@@ -44,6 +44,8 @@ class CreateApplicationsTable extends Migration
                 $developmentBuild,
             ])->default($stableBuild);
 
+            $table->bigInteger('build_number');
+
             $table->string('version')->default('0.0.1');
 
             $table->enum('storage_disk', [
@@ -61,7 +63,7 @@ class CreateApplicationsTable extends Migration
 
             $table->timestamps();
 
-            $table->unique(['build_channel', 'version']);
+            $table->unique(['build_channel', 'version', 'build_number']);
         });
     }
 
