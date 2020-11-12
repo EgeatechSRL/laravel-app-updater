@@ -1,5 +1,5 @@
 {
-    "name": "egeatech/appupdater",
+    "name": "egeatech/app-updater",
     "description": "A package to handle mobile applications self-update",
     "license": "MIT",
     "authors": [
