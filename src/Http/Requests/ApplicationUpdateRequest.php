@@ -30,6 +30,7 @@ class ApplicationUpdateRequest extends FormRequest implements ApplicationUpdateR
         return [
             'name' => 'required|string',
             'build_channel' => 'required|string|in:'. implode(',', BuildChannel::asArray()),
+            'build_number' => 'required|integer',
             'version' => 'required|string', // TODO: check if is a semver-valid value
             'file' => 'required|file',
         ];

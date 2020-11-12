@@ -23,6 +23,13 @@ interface ApplicationModelContract extends Arrayable
     public function getBuildChannelField(): string;
 
     /**
+     * Gets the name of the build number field
+     *
+     * @return string
+     */
+    public function getBuildNumberField(): string;
+
+    /**
      * Gets the name of the version field
      *
      * @return string
@@ -78,6 +85,14 @@ interface ApplicationModelContract extends Arrayable
      * @return BuildChannel
      */
     public function getBuildChannel(): BuildChannel;
+
+    /**
+     * Retrieves the incremental number associated to this
+     * Application instance
+     *
+     * @return int
+     */
+    public function getBuildNumber(): int;
 
     /**
      * Retrieves Application version (in semver format)

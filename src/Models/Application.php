@@ -14,6 +14,7 @@ class Application extends Model implements ApplicationModelContract
     protected $fillable = [
         'name',
         'build_channel',
+        'build_number',
         'version',
         'storage_disk',
         'file_size',
@@ -24,6 +25,7 @@ class Application extends Model implements ApplicationModelContract
     protected $casts = [
         'version' => 'string',
         'build_channel' => BuildChannel::class,
+        'build_number' => 'integer',
         'storage_disk' => StorageDisk::class,
         'file_size' => 'integer',
     ];

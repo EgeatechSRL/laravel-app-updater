@@ -18,6 +18,11 @@ trait HasApplicationFields
         return 'build_channel';
     }
 
+    public function getBuildNumberField(): string
+    {
+        return 'build_number';
+    }
+
     public function getVersionField(): string
     {
         return 'version';
@@ -56,6 +61,11 @@ trait HasApplicationFields
     public function getBuildChannel(): BuildChannel
     {
         return $this->{$this->getBuildChannelField()};
+    }
+
+    public function getBuildNumber(): int
+    {
+        return $this->{$this->getBuildNumberField()};
     }
 
     public function getVersion(): string

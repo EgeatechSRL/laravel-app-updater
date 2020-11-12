@@ -30,8 +30,8 @@ class ApplicationStoreRequest extends FormRequest implements ApplicationStoreReq
         return [
             'name' => 'required|string',
             'build_channel' => 'required|string|in:'. implode(',', BuildChannel::asArray()),
+            'build_number' => 'required|integer',
             'version' => 'required|string', // TODO: check if is a semver-valid value
-            // TODO: Check for uniqueness of the (build_channel + version) couple
             'file' => 'required|file',
         ];
     }

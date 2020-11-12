@@ -3,6 +3,7 @@
 namespace EgeaTech\AppUpdater\Dto;
 
 use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
@@ -14,6 +15,7 @@ class ApplicationStoreData implements ApplicationStoreRequestData
 
     private $_applicationName;
     private $_buildChannel;
+    private $_buildNumber;
     private $_version;
     private $_file;
 
@@ -24,6 +26,7 @@ class ApplicationStoreData implements ApplicationStoreRequestData
         $this->_applicationName = $requestData['name'];
         $this->_buildChannel = BuildChannel::coerce($requestData['build_channel']);
         $this->_version = new ApplicationVersion($requestData['version']);
+        $this->_buildNumber = new BuildNumber($requestData['build_number']);
         $this->_file = $requestData['file'];
     }
 
@@ -47,6 +50,11 @@ class ApplicationStoreData implements ApplicationStoreRequestData
         return $this->_file;
     }
 
+    public function getBuildNumber(): BuildNumber
+    {
+        return $this->_buildNumber;
+    }
+
     public function toArray(): array
     {
         $fileSize = $this->getFile()->getSize();
@@ -55,6 +63,7 @@ class ApplicationStoreData implements ApplicationStoreRequestData
         return [
             $this->_modelInstance->getNameField() => $this->getApplicationName(),
             $this->_modelInstance->getBuildChannelField() => $this->getBuildChannel()->value,
+            $this->_modelInstance->getBuildNumberField() => $this->getBuildNumber()->getValue(),
             $this->_modelInstance->getVersionField() => $this->getVersion()->getValue(),
             $this->_modelInstance->getFileSizeField() => $fileSize,
             $this->_modelInstance->getOriginalFileNameField() => $fileOriginalName,

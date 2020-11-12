@@ -25,6 +25,7 @@ class ApplicationResource extends JsonResource implements ApplicationResourceCon
             'name' => $this->resource->getApplicationName(),
             'version' => $this->resource->getVersion(),
             'build_channel' => (string) $this->resource->getBuildChannel(),
+            'build_number' => $this->resource->getBuildNumber(),
             'original_file_name' => $this->resource->getOriginalFileName(),
             'updated_at' => $this->updated_at,
         ];
