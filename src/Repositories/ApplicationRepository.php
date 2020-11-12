@@ -2,7 +2,6 @@
 
 namespace EgeaTech\AppUpdater\Repositories;
 
-use Composer\Semver\Semver;
 use Illuminate\Support\Collection;
 use Illuminate\Database\QueryException;
 use EgeaTech\AppUpdater\Constants\PdoError;
@@ -30,24 +29,10 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
     public function findLatestVersionBy(array $findCriteria = []): ?ApplicationModelContract
     {
-        $modelVersionColumnName = $this->_modelInstance->getVersionField();
-
-        /** @var Collection $filteredApplications */
-        $filteredApplications = ($this->_modelInstance)
+        return ($this->_modelInstance)
             ->where($findCriteria)
-            ->get();
-
-        if ($filteredApplications->isEmpty()) {
-            return null;
-        }
-
-        $sortedVersions = Semver::rsort($filteredApplications->pluck($modelVersionColumnName)->toArray());
-        $latestVersion = $sortedVersions[0];
-
-        return $filteredApplications
-            ->first(function(ApplicationModelContract $model) use ($modelVersionColumnName, $latestVersion) {
-                return $model->{$modelVersionColumnName} === $latestVersion;
-            });
+            ->orderByDesc($this->_modelInstance->getBuildNumberField())
+            ->first();
     }
 
     public function findAllBy(array $findCriteria = []): Collection
