@@ -31,7 +31,7 @@ class RouteRegistrar
     public function all()
     {
         $this->router
-            ->group([], function(Router $router) {
+            ->group(['middleware' => ['bindings']], function(Router $router) {
 
                 $router->get(
                     '/applications',
