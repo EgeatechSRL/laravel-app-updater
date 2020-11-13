@@ -16,8 +16,6 @@ class AppUpdaterServiceProvider extends ServiceProvider
     {
          $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'app-updater');
 
-         $this->registerDependencyInjectionBindings();
-
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
             $this->bootForConsole();
@@ -32,6 +30,9 @@ class AppUpdaterServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/app-updater.php', 'app-updater');
+
+        // Register the classes which needs to be resolved via dependency injection
+        app()->register(DependencyInjectionProvider::class);
 
         // Register the service the package provides.
         $this->app->singleton('app-updater', function ($app) {
@@ -71,17 +72,7 @@ class AppUpdaterServiceProvider extends ServiceProvider
             __DIR__.'/../../resources/lang' => resource_path('lang/vendor/app-updater'),
         ], 'app-updater.translations');
 
-        // Publishing Vue component files.
-        $this->publishes([
-            __DIR__.'/../../resources/js/Components' => resource_path('js/vendor/egeatech/app-updater'),
-        ], 'app-updater.vue-components');
-
         // Registering package commands.
         // $this->commands([]);
-    }
-
-    private function registerDependencyInjectionBindings(): void
-    {
-        (new DependencyInjectionHandler())->register();
     }
 }

@@ -2,6 +2,7 @@
 
 namespace EgeaTech\AppUpdater\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use EgeaTech\AppUpdater\Models\Application;
 use EgeaTech\AppUpdater\Services\ApplicationsService;
 use EgeaTech\AppUpdater\Repositories\ApplicationRepository;
@@ -23,7 +24,7 @@ use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationUpdateRequestContract
 use EgeaTech\AppUpdater\Contracts\Http\Requests\LatestApplicationRequestContract;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationFileDownloadRequestContract;
 
-class DependencyInjectionHandler
+class DependencyInjectionProvider extends ServiceProvider
 {
     private static $_dependencyInjectionMap = [
         // Models
