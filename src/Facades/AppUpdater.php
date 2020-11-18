@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @method static void routes(?\EgeaTech\AppUpdater\Http\Routing\RoutingOptions $options = null)
+ * @method static void onlyRoutes(?\EgeaTech\AppUpdater\Http\Routing\RoutingOptions $options = null, ...$routes)
+ * @method static void routeBindings()
  */
 class AppUpdater extends Facade
 {

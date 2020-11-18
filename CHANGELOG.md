@@ -2,12 +2,20 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 1.2.0
+
+## Added
+- Show application API
+
+## Updated
+- Router to handle partial routes registration
+
 ## Version 1.1.1
 
 ### Fixed
 - Route model binding not being successfully resolved
 
-## Version 1.1.1
+## Version 1.0.1
 
 ### Fixed
 - Package dependency injection
