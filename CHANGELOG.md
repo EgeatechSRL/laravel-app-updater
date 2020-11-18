@@ -2,6 +2,11 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 1.2.0
+
+## Updated
+- Router to handle partial routes registration
+
 ## Version 1.1.1
 
 ### Fixed
