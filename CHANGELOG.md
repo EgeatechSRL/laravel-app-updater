@@ -4,6 +4,9 @@ All notable changes to `AppUpdater` will be documented in this file.
 
 ## Version 1.2.0
 
+## Added
+- Show application API
+
 ## Updated
 - Router to handle partial routes registration
 
