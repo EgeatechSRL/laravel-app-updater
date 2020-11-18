@@ -11,6 +11,7 @@ final class RoutingOptions
     private $_deleteRouteMiddlewares;
     private $_latestApplicationRouteMiddlewares;
     private $_downloadApplicationRouteMiddlewares;
+    private $_showApplicationRouteMiddlewares;
 
     public function __construct(
         array $globalPackageRoutesOptions = [],
@@ -19,7 +20,8 @@ final class RoutingOptions
         array $updateRouteMiddlewares = [],
         array $deleteRouteMiddlewares = [],
         array $latestApplicationRouteMiddlewares = [],
-        array $downloadApplicationRouteMiddlewares = []
+        array $downloadApplicationRouteMiddlewares = [],
+        array $showApplicationRouteMiddlewares = []
     ) {
         $this->_globalRoutesOptions = $globalPackageRoutesOptions;
         $this->_indexRouteMiddlewares = $indexRouteMiddlewares;
@@ -28,6 +30,7 @@ final class RoutingOptions
         $this->_deleteRouteMiddlewares = $deleteRouteMiddlewares;
         $this->_latestApplicationRouteMiddlewares = $latestApplicationRouteMiddlewares;
         $this->_downloadApplicationRouteMiddlewares = $downloadApplicationRouteMiddlewares;
+        $this->_showApplicationRouteMiddlewares = $showApplicationRouteMiddlewares;
     }
 
     public function getGlobalRoutesOptions(): array
@@ -63,5 +66,10 @@ final class RoutingOptions
     public function getDownloadApplicationRouteMiddlewares(): array
     {
         return $this->_downloadApplicationRouteMiddlewares;
+    }
+
+    public function getShowApplicationRouteMiddlewares(): array
+    {
+        return $this->_showApplicationRouteMiddlewares;
     }
 }

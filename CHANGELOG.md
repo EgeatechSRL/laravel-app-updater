@@ -7,7 +7,7 @@ All notable changes to `AppUpdater` will be documented in this file.
 ### Fixed
 - Route model binding not being successfully resolved
 
-## Version 1.1.1
+## Version 1.0.1
 
 ### Fixed
 - Package dependency injection
