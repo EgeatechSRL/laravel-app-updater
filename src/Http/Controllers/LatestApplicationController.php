@@ -40,6 +40,6 @@ class LatestApplicationController extends BaseController
 
         return $latestApplication
             ? $this->resourceInstance($latestApplication)->toResponse($request)
-            : new JsonResponse(['data' => []]);
+            : new JsonResponse(['data' => null]);
     }
 }
