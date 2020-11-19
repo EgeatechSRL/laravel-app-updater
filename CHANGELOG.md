@@ -2,6 +2,11 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 1.2.1
+
+## Fixed
+- When no latest application is available, `data` field in response payload is `null`, not `[]`
+
 ## Version 1.2.0
 
 ## Added
