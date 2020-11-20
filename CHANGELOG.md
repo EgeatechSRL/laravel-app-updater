@@ -2,6 +2,11 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 1.2.2
+
+## Fixed
+- Application Storage disk not saved correctly
+
 ## Version 1.2.1
 
 ## Fixed

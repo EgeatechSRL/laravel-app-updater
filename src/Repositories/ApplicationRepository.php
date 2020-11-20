@@ -5,6 +5,7 @@ namespace EgeaTech\AppUpdater\Repositories;
 use Illuminate\Support\Collection;
 use Illuminate\Database\QueryException;
 use EgeaTech\AppUpdater\Constants\PdoError;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
 use EgeaTech\AppUpdater\Exceptions\InvalidVersionException;
@@ -40,12 +41,13 @@ class ApplicationRepository implements ApplicationRepositoryContract
         return ($this->_modelInstance)->where($findCriteria)->get();
     }
 
-    public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath): ApplicationModelContract
+    public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract
     {
         try {
 
             $applicationData = $data->toArray();
             $applicationData[$this->_modelInstance->getFilePathField()] = $filePath->getValue();
+            $applicationData[$this->_modelInstance->getStorageDiskField()] = $storageDisk->value;
 
             return ($this->_modelInstance)->create($applicationData);
         } catch (QueryException $exception) {
@@ -57,7 +59,7 @@ class ApplicationRepository implements ApplicationRepositoryContract
         }
     }
 
-    public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath): ApplicationModelContract
+    public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract
     {
         try {
 
@@ -72,6 +74,7 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
             if ($filePath) {
                 $application->{$this->_modelInstance->getFilePathField()} = $filePath->getValue();
+                $application->{$this->_modelInstance->getStorageDiskField()} = $storageDisk->value;
             }
 
             $application->save();

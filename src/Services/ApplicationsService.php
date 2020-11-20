@@ -45,21 +45,24 @@ class ApplicationsService implements ApplicationsServiceContract
 
     public function storeApplication(ApplicationStoreRequestData $applicationData): ApplicationModelContract
     {
+        $storageDisk = StorageDisk::coerce(config('app-updater.disk'));
         $filePath = $this->storeApplicationFile(
-            StorageDisk::coerce(config('app-updater.disk')),
+            $storageDisk,
             $applicationData->getFile()
         );
 
         return $this->_applicationRepository
             ->storeApplication(
                 $applicationData,
-                new ApplicationFilePath($filePath)
+                new ApplicationFilePath($filePath),
+                $storageDisk
             );
     }
 
     public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $applicationData): ApplicationModelContract
     {
         $newFile = $applicationData->getFile();
+        $storageDisk = StorageDisk::coerce(config('app-updater.disk'));
         $newFilePath = null;
 
         if ($newFile) {
@@ -70,7 +73,7 @@ class ApplicationsService implements ApplicationsServiceContract
         }
 
         return $this->_applicationRepository
-            ->updateApplication($id, $applicationData, $newFilePath);
+            ->updateApplication($id, $applicationData, $newFilePath, $storageDisk);
     }
 
     public function deleteApplication(ApplicationId $id): bool
