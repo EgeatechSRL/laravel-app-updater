@@ -3,6 +3,7 @@
 namespace EgeaTech\AppUpdater\Contracts\Repositories;
 
 use Illuminate\Support\Collection;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
@@ -39,10 +40,11 @@ interface ApplicationRepositoryContract
      * Stores a new Application entity
      *
      * @param ApplicationStoreRequestData $data
+     * @param StorageDisk $storageDisk
      * @param ApplicationFilePath $filePath
      * @return ApplicationModelContract
      */
-    public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath): ApplicationModelContract;
+    public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract;
 
     /**
      * Updates an existing Application entity
@@ -50,9 +52,10 @@ interface ApplicationRepositoryContract
      * @param ApplicationId $id
      * @param ApplicationUpdateRequestData $data
      * @param ApplicationFilePath|null $filePath
+     * @param StorageDisk $storageDisk
      * @return ApplicationModelContract
      */
-    public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath): ApplicationModelContract;
+    public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract;
 
     /**
      * Deletes an existing Application entity
