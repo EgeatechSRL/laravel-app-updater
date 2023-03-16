@@ -2,14 +2,14 @@
 
 namespace EgeaTech\AppUpdater\Http\Controllers;
 
+use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationDeleteRequestContract;
+use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
-use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
-use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationDeleteRequestContract;
 
 class ApplicationDeleteController extends BaseController
 {
@@ -25,8 +25,8 @@ class ApplicationDeleteController extends BaseController
     /**
      * Handler for the API which deletes an Application
      *
-     * @param ApplicationId $applicationId
-     * @param ApplicationDeleteRequestContract $request
+     * @param  ApplicationId  $applicationId
+     * @param  ApplicationDeleteRequestContract  $request
      * @return JsonResponse
      */
     public function __invoke(ApplicationId $applicationId, ApplicationDeleteRequestContract $request): JsonResponse

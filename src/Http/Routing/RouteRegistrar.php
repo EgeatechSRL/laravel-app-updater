@@ -2,19 +2,19 @@
 
 namespace EgeaTech\AppUpdater\Http\Routing;
 
+use EgeaTech\AppUpdater\Http\Controllers\ApplicationDeleteController;
+use EgeaTech\AppUpdater\Http\Controllers\ApplicationIndexController;
+use EgeaTech\AppUpdater\Http\Controllers\ApplicationShowController;
+use EgeaTech\AppUpdater\Http\Controllers\ApplicationStoreController;
+use EgeaTech\AppUpdater\Http\Controllers\ApplicationUpdateController;
+use EgeaTech\AppUpdater\Http\Controllers\DownloadApplicationFileController;
+use EgeaTech\AppUpdater\Http\Controllers\LatestApplicationController;
 use Illuminate\Contracts\Routing\Registrar as Router;
-use EgeaTech\AppUpdater\Http\Controllers\{ApplicationIndexController,
-    ApplicationShowController,
-    ApplicationStoreController,
-    LatestApplicationController,
-    ApplicationUpdateController,
-    DownloadApplicationFileController,
-    ApplicationDeleteController
-};
 
 class RouteRegistrar
 {
     protected $router;
+
     protected $routeOptions;
 
     public function __construct(Router $router, RoutingOptions $routeOptions)

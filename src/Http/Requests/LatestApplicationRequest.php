@@ -2,12 +2,11 @@
 
 namespace EgeaTech\AppUpdater\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
-use EgeaTech\AppUpdater\Dto\ApplicationsListFilters;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationsListRequestFilters;
-use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationIndexRequestContract;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\LatestApplicationRequestContract;
+use EgeaTech\AppUpdater\Dto\ApplicationsListFilters;
+use Illuminate\Foundation\Http\FormRequest;
 
 class LatestApplicationRequest extends FormRequest implements LatestApplicationRequestContract
 {
@@ -29,7 +28,7 @@ class LatestApplicationRequest extends FormRequest implements LatestApplicationR
     public function rules()
     {
         return [
-            'build_channel' => 'required|string|in:'. implode(',', BuildChannel::asArray()),
+            'build_channel' => 'required|string|in:'.implode(',', BuildChannel::asArray()),
         ];
     }
 

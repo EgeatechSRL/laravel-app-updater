@@ -2,4 +2,6 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Http\Requests;
 
-interface ApplicationUpdateRequestContract extends AppUpdaterRequest {}
+interface ApplicationUpdateRequestContract extends AppUpdaterRequest
+{
+}

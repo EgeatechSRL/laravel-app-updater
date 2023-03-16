@@ -2,19 +2,19 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Services;
 
-use Illuminate\Support\Collection;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationsListRequestFilters;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Support\Collection;
 
 interface ApplicationsServiceContract
 {
     /**
      * Retrieves the list of Application models
      *
-     * @param ApplicationsListRequestFilters $filters
+     * @param  ApplicationsListRequestFilters  $filters
      * @return Collection<ApplicationModelContract>
      */
     public function getAvailableApplications(ApplicationsListRequestFilters $filters): Collection;
@@ -22,7 +22,7 @@ interface ApplicationsServiceContract
     /**
      * Fetches an Application given its id
      *
-     * @param ApplicationId $applicationId
+     * @param  ApplicationId  $applicationId
      * @return ApplicationModelContract
      */
     public function getApplicationById(ApplicationId $applicationId): ApplicationModelContract;
@@ -31,7 +31,7 @@ interface ApplicationsServiceContract
      * Fetches the latest Application from the valid
      * ones according to provided filters
      *
-     * @param ApplicationsListRequestFilters $filters
+     * @param  ApplicationsListRequestFilters  $filters
      * @return ApplicationModelContract|null
      */
     public function getLatestAvailableApplication(ApplicationsListRequestFilters $filters): ?ApplicationModelContract;
@@ -39,7 +39,7 @@ interface ApplicationsServiceContract
     /**
      * Stores a new Application
      *
-     * @param ApplicationStoreRequestData $applicationData
+     * @param  ApplicationStoreRequestData  $applicationData
      * @return ApplicationModelContract
      */
     public function storeApplication(ApplicationStoreRequestData $applicationData): ApplicationModelContract;
@@ -47,8 +47,8 @@ interface ApplicationsServiceContract
     /**
      * Updates an existing Application
      *
-     * @param ApplicationId $id
-     * @param ApplicationUpdateRequestData $applicationData
+     * @param  ApplicationId  $id
+     * @param  ApplicationUpdateRequestData  $applicationData
      * @return ApplicationModelContract
      */
     public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $applicationData): ApplicationModelContract;
@@ -57,7 +57,7 @@ interface ApplicationsServiceContract
      * Removes an existing Application from the database,
      * removing its associated files too
      *
-     * @param ApplicationId $id
+     * @param  ApplicationId  $id
      * @return bool
      */
     public function deleteApplication(ApplicationId $id): bool;

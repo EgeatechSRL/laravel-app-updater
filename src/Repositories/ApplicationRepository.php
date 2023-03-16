@@ -2,17 +2,17 @@
 
 namespace EgeaTech\AppUpdater\Repositories;
 
-use Illuminate\Support\Collection;
-use Illuminate\Database\QueryException;
 use EgeaTech\AppUpdater\Constants\PdoError;
 use EgeaTech\AppUpdater\Constants\StorageDisk;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
-use EgeaTech\AppUpdater\Exceptions\InvalidVersionException;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 use EgeaTech\AppUpdater\Contracts\Repositories\ApplicationRepositoryContract;
+use EgeaTech\AppUpdater\Exceptions\InvalidVersionException;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Collection;
 
 class ApplicationRepository implements ApplicationRepositoryContract
 {
@@ -25,12 +25,12 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
     public function find(ApplicationId $id): ApplicationModelContract
     {
-        return ($this->_modelInstance)->findOrFail($id->getValue());
+        return $this->_modelInstance->findOrFail($id->getValue());
     }
 
     public function findLatestVersionBy(array $findCriteria = []): ?ApplicationModelContract
     {
-        return ($this->_modelInstance)
+        return $this->_modelInstance
             ->where($findCriteria)
             ->orderByDesc($this->_modelInstance->getBuildNumberField())
             ->first();
@@ -38,18 +38,17 @@ class ApplicationRepository implements ApplicationRepositoryContract
 
     public function findAllBy(array $findCriteria = []): Collection
     {
-        return ($this->_modelInstance)->where($findCriteria)->get();
+        return $this->_modelInstance->where($findCriteria)->get();
     }
 
     public function storeApplication(ApplicationStoreRequestData $data, ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract
     {
         try {
-
             $applicationData = $data->toArray();
             $applicationData[$this->_modelInstance->getFilePathField()] = $filePath->getValue();
             $applicationData[$this->_modelInstance->getStorageDiskField()] = $storageDisk->value;
 
-            return ($this->_modelInstance)->create($applicationData);
+            return $this->_modelInstance->create($applicationData);
         } catch (QueryException $exception) {
             if ($exception->getCode() === PdoError::DuplicatedValue) {
                 throw new InvalidVersionException($exception);
@@ -62,7 +61,6 @@ class ApplicationRepository implements ApplicationRepositoryContract
     public function updateApplication(ApplicationId $id, ApplicationUpdateRequestData $data, ?ApplicationFilePath $filePath, StorageDisk $storageDisk): ApplicationModelContract
     {
         try {
-
             $application = $this->find($id);
             $updateData = $data->toArray();
 
@@ -80,7 +78,6 @@ class ApplicationRepository implements ApplicationRepositoryContract
             $application->save();
 
             return $application;
-
         } catch (QueryException $exception) {
             if ($exception->getCode() === PdoError::DuplicatedValue) {
                 throw new InvalidVersionException($exception);

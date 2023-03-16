@@ -2,8 +2,8 @@
 
 namespace EgeaTech\AppUpdater\Http\Controllers\Traits;
 
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 use EgeaTech\AppUpdater\Contracts\Http\Resources\ApplicationResourceContract;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 
 trait ResolvesJsonResource
 {

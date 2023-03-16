@@ -2,20 +2,20 @@
 
 namespace EgeaTech\AppUpdater\Services;
 
+use EgeaTech\AppUpdater\Constants\StorageDisk;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationsListRequestFilters;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
+use EgeaTech\AppUpdater\Contracts\Repositories\ApplicationRepositoryContract;
+use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use Exception;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
-use EgeaTech\AppUpdater\Constants\StorageDisk;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationFilePath;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationsListRequestFilters;
-use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
-use EgeaTech\AppUpdater\Contracts\Repositories\ApplicationRepositoryContract;
 
 class ApplicationsService implements ApplicationsServiceContract
 {
@@ -99,9 +99,10 @@ class ApplicationsService implements ApplicationsServiceContract
     /**
      * Stores inside $disk a new Application file
      *
-     * @param StorageDisk $disk
-     * @param UploadedFile $newFile
+     * @param  StorageDisk  $disk
+     * @param  UploadedFile  $newFile
      * @return string The path of the new file
+     *
      * @throws Exception
      */
     private function storeApplicationFile(StorageDisk $disk, UploadedFile $newFile): string
@@ -127,7 +128,7 @@ class ApplicationsService implements ApplicationsServiceContract
     /**
      * Removes the file referenced by given Application from disk
      *
-     * @param ApplicationModelContract $application
+     * @param  ApplicationModelContract  $application
      * @return bool
      */
     private function deleteApplicationFile(ApplicationModelContract $application): bool

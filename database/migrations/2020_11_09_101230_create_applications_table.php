@@ -1,10 +1,10 @@
 <?php
 
+use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use EgeaTech\AppUpdater\Constants\StorageDisk;
-use EgeaTech\AppUpdater\Constants\BuildChannel;
 
 class CreateApplicationsTable extends Migration
 {
@@ -22,7 +22,7 @@ class CreateApplicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create($this->_tableName, function(Blueprint $table) {
+        Schema::create($this->_tableName, function (Blueprint $table) {
             $publicDisk = StorageDisk::Public;
             $localDisk = StorageDisk::Local;
             $ftpDisk = StorageDisk::Ftp;

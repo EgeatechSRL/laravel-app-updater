@@ -5,12 +5,19 @@ namespace EgeaTech\AppUpdater\Http\Routing;
 final class RoutingOptions
 {
     private $_globalRoutesOptions;
+
     private $_indexRouteMiddlewares;
+
     private $_storeRouteMiddlewares;
+
     private $_updateRouteMiddlewares;
+
     private $_deleteRouteMiddlewares;
+
     private $_latestApplicationRouteMiddlewares;
+
     private $_downloadApplicationRouteMiddlewares;
+
     private $_showApplicationRouteMiddlewares;
 
     public function __construct(

@@ -2,11 +2,11 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Dto;
 
-use Illuminate\Contracts\Support\Arrayable;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
-use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
+use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
+use Illuminate\Contracts\Support\Arrayable;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 interface ApplicationUpdateRequestData extends ApplicationUpdaterRequestData, Arrayable
 {

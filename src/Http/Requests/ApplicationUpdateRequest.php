@@ -2,11 +2,11 @@
 
 namespace EgeaTech\AppUpdater\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
-use EgeaTech\AppUpdater\Dto\ApplicationUpdateData;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdaterRequestData;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationUpdateRequestContract;
+use EgeaTech\AppUpdater\Dto\ApplicationUpdateData;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ApplicationUpdateRequest extends FormRequest implements ApplicationUpdateRequestContract
 {
@@ -29,7 +29,7 @@ class ApplicationUpdateRequest extends FormRequest implements ApplicationUpdateR
     {
         return [
             'name' => 'required|string',
-            'build_channel' => 'required|string|in:'. implode(',', BuildChannel::asArray()),
+            'build_channel' => 'required|string|in:'.implode(',', BuildChannel::asArray()),
             'build_number' => 'required|integer',
             'version' => 'required|string', // TODO: check if is a semver-valid value
             'file' => 'required|file',

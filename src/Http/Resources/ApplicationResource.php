@@ -2,10 +2,10 @@
 
 namespace EgeaTech\AppUpdater\Http\Resources;
 
+use EgeaTech\AppUpdater\Contracts\Http\Resources\ApplicationResourceContract;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
-use EgeaTech\AppUpdater\Contracts\Http\Resources\ApplicationResourceContract;
 
 /**
  * @property-read ApplicationModelContract $resource

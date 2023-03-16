@@ -3,20 +3,24 @@
 namespace EgeaTech\AppUpdater\Dto;
 
 use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
+use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
 use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
-use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
-use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
 
 class ApplicationUpdateData implements ApplicationUpdateRequestData
 {
     private $_modelInstance;
 
     private $_applicationName;
+
     private $_buildChannel;
+
     private $_buildNumber;
+
     private $_version;
+
     private $_file;
 
     public function __construct(array $requestData)
@@ -64,7 +68,7 @@ class ApplicationUpdateData implements ApplicationUpdateRequestData
             $this->_modelInstance->getVersionField() => $this->getVersion()->getValue(),
         ];
 
-        if (!is_null($this->getFile())) {
+        if (! is_null($this->getFile())) {
             $fileSize = $this->getFile()->getSize();
             $fileOriginalName = $this->getFile()->getClientOriginalName();
 

@@ -2,15 +2,15 @@
 
 namespace EgeaTech\AppUpdater\Http\Controllers;
 
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
-use Symfony\Component\HttpFoundation\StreamedResponse;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationFileDownloadRequestContract;
+use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class DownloadApplicationFileController extends BaseController
 {
@@ -26,8 +26,8 @@ class DownloadApplicationFileController extends BaseController
     /**
      * Downloads the file associated to a specific Application
      *
-     * @param ApplicationId $applicationId
-     * @param ApplicationFileDownloadRequestContract $request
+     * @param  ApplicationId  $applicationId
+     * @param  ApplicationFileDownloadRequestContract  $request
      * @return StreamedResponse
      */
     public function __invoke(ApplicationId $applicationId, ApplicationFileDownloadRequestContract $request)
@@ -39,7 +39,7 @@ class DownloadApplicationFileController extends BaseController
                 $application->getFilePath(),
                 $application->getOriginalFileName(),
                 [
-                    'Content-Type' => 'application/vnd.android.package-archive'
+                    'Content-Type' => 'application/vnd.android.package-archive',
                 ]
             );
     }

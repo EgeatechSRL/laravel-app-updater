@@ -2,4 +2,6 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Http\Requests;
 
-interface ApplicationShowRequestContract {}
+interface ApplicationShowRequestContract
+{
+}

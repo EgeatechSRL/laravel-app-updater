@@ -2,4 +2,6 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Dto;
 
-interface ApplicationUpdaterRequestData {}
+interface ApplicationUpdaterRequestData
+{
+}

@@ -2,10 +2,10 @@
 
 namespace EgeaTech\AppUpdater\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
+use Illuminate\Database\Eloquent\Model;
 
 class Application extends Model implements ApplicationModelContract
 {

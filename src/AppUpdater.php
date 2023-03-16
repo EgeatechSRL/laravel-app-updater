@@ -2,10 +2,10 @@
 
 namespace EgeaTech\AppUpdater;
 
-use Illuminate\Support\Facades\Route;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use EgeaTech\AppUpdater\Http\Routing\RouteRegistrar;
 use EgeaTech\AppUpdater\Http\Routing\RoutingOptions;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Support\Facades\Route;
 
 class AppUpdater
 {
@@ -30,12 +30,12 @@ class AppUpdater
     /**
      * Registers all available package routes
      *
-     * @param null|RoutingOptions $options
+     * @param  null|RoutingOptions  $options
      * @return void
      */
     public static function routes(?RoutingOptions $options = null): void
     {
-        if (!$options) {
+        if (! $options) {
             $options = new RoutingOptions();
         }
 
@@ -43,7 +43,7 @@ class AppUpdater
         self::routeBindings();
 
         // ...And all package routes
-        Route::group($options->getGlobalRoutesOptions(), function($router) use ($options) {
+        Route::group($options->getGlobalRoutesOptions(), function ($router) use ($options) {
             (new RouteRegistrar($router, $options))->all();
         });
     }
@@ -62,12 +62,12 @@ class AppUpdater
     /**
      * Register only a subset of package routes
      *
-     * @param RoutingOptions|null $options
-     * @param string[] $routes
+     * @param  RoutingOptions|null  $options
+     * @param  string[]  $routes
      */
-    public static function onlyRoutes(?RoutingOptions $options = null, ... $routes): void
+    public static function onlyRoutes(?RoutingOptions $options = null, ...$routes): void
     {
-        if (!$options) {
+        if (! $options) {
             $options = new RoutingOptions();
         }
 
@@ -75,7 +75,7 @@ class AppUpdater
         self::routeBindings();
 
         // ...And the routes chosen by the user
-        Route::group($options->getGlobalRoutesOptions(), function($router) use ($options, $routes) {
+        Route::group($options->getGlobalRoutesOptions(), function ($router) use ($options, $routes) {
             $registrarInstance = new RouteRegistrar($router, $options);
 
             foreach ($routes as $route) {

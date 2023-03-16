@@ -14,7 +14,7 @@ class AppUpdaterServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'app-updater');
+        $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'app-updater');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {

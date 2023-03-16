@@ -3,20 +3,24 @@
 namespace EgeaTech\AppUpdater\Dto;
 
 use EgeaTech\AppUpdater\Constants\BuildChannel;
-use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationStoreRequestData;
 use EgeaTech\AppUpdater\Contracts\Models\ApplicationModelContract;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationVersion;
+use EgeaTech\AppUpdater\ValueObjects\BuildNumber;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ApplicationStoreData implements ApplicationStoreRequestData
 {
     private $_modelInstance;
 
     private $_applicationName;
+
     private $_buildChannel;
+
     private $_buildNumber;
+
     private $_version;
+
     private $_file;
 
     public function __construct(array $requestData)

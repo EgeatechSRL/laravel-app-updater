@@ -2,8 +2,8 @@
 
 namespace EgeaTech\AppUpdater\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationShowRequestContract;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ApplicationShowRequest extends FormRequest implements ApplicationShowRequestContract
 {

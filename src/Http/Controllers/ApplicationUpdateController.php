@@ -2,17 +2,17 @@
 
 namespace EgeaTech\AppUpdater\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Routing\Controller as BaseController;
-use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationUpdateRequestData;
-use EgeaTech\AppUpdater\Http\Controllers\Traits\ResolvesJsonResource;
-use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationUpdateRequestContract;
+use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
+use EgeaTech\AppUpdater\Http\Controllers\Traits\ResolvesJsonResource;
+use EgeaTech\AppUpdater\ValueObjects\ApplicationId;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller as BaseController;
+use Symfony\Component\HttpFoundation\Response;
 
 class ApplicationUpdateController extends BaseController
 {
@@ -29,8 +29,8 @@ class ApplicationUpdateController extends BaseController
     }
 
     /**
-     * @param ApplicationId $applicationId
-     * @param ApplicationUpdateRequestContract|Request $request
+     * @param  ApplicationId  $applicationId
+     * @param  ApplicationUpdateRequestContract|Request  $request
      * @return Response
      */
     public function __invoke(ApplicationId $applicationId, ApplicationUpdateRequestContract $request): Response

@@ -2,11 +2,11 @@
 
 namespace EgeaTech\AppUpdater\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
-use EgeaTech\AppUpdater\Dto\ApplicationsListFilters;
 use EgeaTech\AppUpdater\Contracts\Dto\ApplicationsListRequestFilters;
 use EgeaTech\AppUpdater\Contracts\Http\Requests\ApplicationIndexRequestContract;
+use EgeaTech\AppUpdater\Dto\ApplicationsListFilters;
+use Illuminate\Foundation\Http\FormRequest;
 
 class ApplicationIndexRequest extends FormRequest implements ApplicationIndexRequestContract
 {
@@ -28,7 +28,7 @@ class ApplicationIndexRequest extends FormRequest implements ApplicationIndexReq
     public function rules()
     {
         return [
-            'build_channel' => 'nullable|string|in:'. implode(',', BuildChannel::asArray()),
+            'build_channel' => 'nullable|string|in:'.implode(',', BuildChannel::asArray()),
         ];
     }
 

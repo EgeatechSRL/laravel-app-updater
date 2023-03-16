@@ -2,16 +2,16 @@
 
 namespace EgeaTech\AppUpdater\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use EgeaTech\AppUpdater\Contracts\Http\Requests\LatestApplicationRequestContract;
+use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
+use EgeaTech\AppUpdater\Http\Controllers\Traits\ResolvesJsonResource;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use EgeaTech\AppUpdater\Http\Controllers\Traits\ResolvesJsonResource;
-use EgeaTech\AppUpdater\Contracts\Services\ApplicationsServiceContract;
-use EgeaTech\AppUpdater\Contracts\Http\Requests\LatestApplicationRequestContract;
+use Symfony\Component\HttpFoundation\Response;
 
 class LatestApplicationController extends BaseController
 {
@@ -30,7 +30,7 @@ class LatestApplicationController extends BaseController
     /**
      * Handles the API which retrieves the latest Application instance available
      *
-     * @param LatestApplicationRequestContract|Request $request
+     * @param  LatestApplicationRequestContract|Request  $request
      * @return Response
      */
     public function __invoke(LatestApplicationRequestContract $request): Response

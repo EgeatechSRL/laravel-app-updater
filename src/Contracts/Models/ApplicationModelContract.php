@@ -2,9 +2,9 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Models;
 
-use Illuminate\Contracts\Support\Arrayable;
-use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
+use Illuminate\Contracts\Support\Arrayable;
 
 interface ApplicationModelContract extends Arrayable
 {

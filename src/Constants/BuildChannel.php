@@ -13,7 +13,10 @@ use BenSampo\Enum\Enum;
 final class BuildChannel extends Enum
 {
     const Stable = 'stable';
+
     const Beta = 'beta';
+
     const Testing = 'testing';
+
     const Development = 'development';
 }

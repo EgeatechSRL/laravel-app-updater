@@ -2,7 +2,9 @@
 
 namespace EgeaTech\AppUpdater\Contracts\Http\Resources;
 
-use JsonSerializable;
 use Illuminate\Contracts\Support\Responsable;
+use JsonSerializable;
 
-interface ApplicationResourceContract extends JsonSerializable, Responsable {}
+interface ApplicationResourceContract extends JsonSerializable, Responsable
+{
+}

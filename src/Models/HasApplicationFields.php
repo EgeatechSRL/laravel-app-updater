@@ -2,9 +2,9 @@
 
 namespace EgeaTech\AppUpdater\Models;
 
-use Illuminate\Support\Facades\Storage;
-use EgeaTech\AppUpdater\Constants\StorageDisk;
 use EgeaTech\AppUpdater\Constants\BuildChannel;
+use EgeaTech\AppUpdater\Constants\StorageDisk;
+use Illuminate\Support\Facades\Storage;
 
 trait HasApplicationFields
 {
