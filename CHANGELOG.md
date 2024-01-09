@@ -2,6 +2,11 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 3.0.1
+
+### Update
+- Removing duplicated `bensampo/laravel-enum` version
+
 ## Version 3.0.0
 
 ## Added

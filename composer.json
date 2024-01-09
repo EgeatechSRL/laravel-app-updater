@@ -16,7 +16,7 @@
         "ext-fileinfo": "*",
         "ext-json": "*",
         "illuminate/support": "~6|~7|~8|~9|~10",
-        "bensampo/laravel-enum": "^4.2|^v6.7.0"
+        "bensampo/laravel-enum": "^v6.7.0"
     },
     "require-dev": {
         "phpunit/phpunit": "~9.0",
