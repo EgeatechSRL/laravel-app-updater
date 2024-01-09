@@ -2,6 +2,11 @@
 
 All notable changes to `AppUpdater` will be documented in this file.
 
+## Version 3.0.0
+
+## Added
+- Laravel 9.x support
+
 ## Version 1.2.2
 
 ## Fixed
